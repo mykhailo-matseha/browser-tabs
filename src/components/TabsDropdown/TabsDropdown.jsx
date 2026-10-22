@@ -4,7 +4,7 @@ import Icon from "../ui/Icon";
 import Tab from "../Tab";
 import { useRef, useState } from "react";
 import { useClickOut } from "@/hooks/useClickOut";
-function TabsDropdown({ ref, hiddenTabs, pinToggle, handleContextMenu }) {
+function TabsDropdown({ ref, hiddenTabs, handleContextMenu }) {
   const [isOpen, setIsOpen] = useState(false);
   useClickOut(ref, () => setIsOpen(false));
   return (
@@ -13,6 +13,7 @@ function TabsDropdown({ ref, hiddenTabs, pinToggle, handleContextMenu }) {
       className={`${styles.dropdown} ${isOpen ? styles.open : ""}`}
     >
       <button
+        type="button"
         className={styles.button}
         onClick={() => setIsOpen((prev) => !prev)}
       >
@@ -25,7 +26,6 @@ function TabsDropdown({ ref, hiddenTabs, pinToggle, handleContextMenu }) {
               <Tab
                 variant="dropdown"
                 tabData={tab}
-                pinToggle={pinToggle}
                 onClick={() => setIsOpen(false)}
               />
             </div>
