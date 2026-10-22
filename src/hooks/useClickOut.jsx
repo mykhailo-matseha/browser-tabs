@@ -1,12 +1,14 @@
 import { useEffect } from "react";
 
 export function useClickOut(ref, handler) {
+  const handlerRef = useRef(handler);
+  handlerRef.current = handler;
   useEffect(() => {
     const listener = (event) => {
       if (!ref.current || ref.current.contains(event.target)) {
         return;
       }
-      handler(event);
+      handlerRef.current?.(event);
     };
     document.addEventListener("mousedown", listener);
     document.addEventListener("touchstart", listener);
@@ -14,5 +16,5 @@ export function useClickOut(ref, handler) {
       document.removeEventListener("mousedown", listener);
       document.removeEventListener("touchstart", listener);
     };
-  }, [ref, handler]);
+  }, [ref]);
 }
