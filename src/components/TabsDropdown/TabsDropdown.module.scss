@@ -1,0 +1,40 @@
+.dropdown {
+  position: relative;
+}
+
+.body {
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 100%;
+  > div {
+    transform: rotate(180deg);
+    transition: all 0.3s;
+  }
+  .open & {
+    > div {
+      transform: rotate(0deg);
+    }
+  }
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: $accentColor;
+      --ic: #fff;
+    }
+  }
+}
+
+.body {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  padding: 0 15px;
+  background-color: $bgColor;
+}

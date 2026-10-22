@@ -18,5 +18,5 @@ export default function Icon({ name }) {
     "--icon-url": `url("${iconPath}")`,
   };
 
-  return <span className={`icon`} style={inlineStyles} />;
+  return <div className={`icon`} style={inlineStyles} />;
 }
