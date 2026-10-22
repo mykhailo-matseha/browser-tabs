@@ -1,5 +1,7 @@
 .wrapper {
   position: relative;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 .tab {
   display: flex;

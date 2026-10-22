@@ -11,6 +11,8 @@
   justify-content: center;
   width: 36px;
   height: 100%;
+  transition: all 0.3s;
+  flex-shrink: 0;
   > div {
     transform: rotate(180deg);
     transition: all 0.3s;

@@ -1,7 +1,6 @@
 .tabs {
   background-color: $bgColor;
   display: flex;
-
   &:not(:last-child) {
     margin-bottom: 20px;
   }
@@ -11,4 +10,6 @@
   display: flex;
   flex-grow: 1;
   border: 1px solid rgba(174, 182, 206, 0.2);
+  min-width: 0;
+  overflow: hidden;
 }

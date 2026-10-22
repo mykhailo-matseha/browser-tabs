@@ -4,13 +4,12 @@ import Icon from "../ui/Icon";
 import Tab from "../Tab";
 import { useRef, useState } from "react";
 import { useClickOut } from "@/hooks/useClickOut";
-function TabsDropdown({ hiddenTabs, pinToggle, handleContextMenu }) {
+function TabsDropdown({ ref, hiddenTabs, pinToggle, handleContextMenu }) {
   const [isOpen, setIsOpen] = useState(false);
-  const listRef = useRef(null);
-  useClickOut(listRef, () => setIsOpen(false));
+  useClickOut(ref, () => setIsOpen(false));
   return (
     <div
-      ref={listRef}
+      ref={ref}
       className={`${styles.dropdown} ${isOpen ? styles.open : ""}`}
     >
       <button

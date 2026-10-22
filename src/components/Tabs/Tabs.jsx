@@ -1,12 +1,19 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Tab from "../Tab";
 import TabsDropdown from "../TabsDropdown";
 import styles from "./Tabs.module.scss";
 import TabContextMenu from "../TabContextMenu";
+import { useTabsSplit } from "@/hooks/useTabsSplit";
 
 function Tabs({ initialTabs }) {
-  const visibleTabs = JSON.parse(JSON.stringify(initialTabs)).slice(0, 7);
-  const hiddenTabs = JSON.parse(JSON.stringify(initialTabs)).slice(7);
+  const containerRef = useRef(null);
+  const dropdownRef = useRef(null);
+
+  const { visibleTabs, hiddenTabs, measureTab } = useTabsSplit(
+    initialTabs,
+    containerRef,
+    dropdownRef,
+  );
 
   const [contextMenu, setContextMenu] = useState(null);
 
@@ -28,19 +35,28 @@ function Tabs({ initialTabs }) {
   };
 
   return (
-    <nav className={styles.tabs}>
+    <nav ref={containerRef} className={styles.tabs}>
       <div className={styles.list}>
         {visibleTabs.map((tab) => (
-          <div key={tab.id} onContextMenu={(e) => handleContextMenu(e, tab)}>
-            <Tab variant="menu" tabData={tab} pinToggle={pinToggle} />
-          </div>
+          <Tab
+            key={tab.id}
+            variant="menu"
+            tabData={tab}
+            pinToggle={pinToggle}
+            handleContextMenu={(e) => handleContextMenu(e, tab)}
+            ref={measureTab(tab.id)}
+          />
         ))}
       </div>
-      <TabsDropdown
-        hiddenTabs={hiddenTabs}
-        pinToggle={pinToggle}
-        handleContextMenu={handleContextMenu}
-      />
+      {!!hiddenTabs.length && (
+        <TabsDropdown
+          ref={dropdownRef}
+          hiddenTabs={hiddenTabs}
+          pinToggle={pinToggle}
+          handleContextMenu={handleContextMenu}
+        />
+      )}
+
       {contextMenu && (
         <TabContextMenu
           position={{ x: contextMenu.x, y: contextMenu.y }}

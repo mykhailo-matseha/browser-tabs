@@ -1,7 +1,14 @@
 import { NavLink } from "react-router";
 import styles from "./Tab.module.scss";
 import Icon from "../ui/Icon";
-function Tab({ variant = "menu", tabData, pinToggle, onClick }) {
+function Tab({
+  variant = "menu",
+  tabData,
+  pinToggle,
+  onClick,
+  ref,
+  handleContextMenu,
+}) {
   const getLinkClassName = ({ isActive }) =>
     [
       styles.tab,
@@ -13,7 +20,7 @@ function Tab({ variant = "menu", tabData, pinToggle, onClick }) {
       .join(" ");
 
   return (
-    <div className={styles.wrapper}>
+    <div ref={ref} onContextMenu={handleContextMenu} className={styles.wrapper}>
       <NavLink onClick={onClick} className={getLinkClassName} to={tabData.path}>
         <Icon name={tabData.icon} />
         <span>{tabData.title}</span>
