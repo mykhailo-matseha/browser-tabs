@@ -13,6 +13,7 @@ function TabsDropdown({ ref, hiddenTabs, handleContextMenu }) {
       className={`${styles.dropdown} ${isOpen ? styles.open : ""}`}
     >
       <button
+        aria-label="toggle dropdown button"
         type="button"
         className={styles.button}
         onClick={() => setIsOpen((prev) => !prev)}

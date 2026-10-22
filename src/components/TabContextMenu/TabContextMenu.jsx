@@ -22,6 +22,7 @@ export default function TabContextMenu({
       }}
     >
       <button
+        aria-label="toggle pin button"
         type="button"
         className={styles.item}
         onClick={() => {
