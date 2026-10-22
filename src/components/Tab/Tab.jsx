@@ -32,7 +32,7 @@ function Tab({
       <NavLink onClick={onClick} className={getLinkClassName} to={tabData.path}>
         <Icon name={tabData.icon} />
         <span>{tabData.title}</span>
-        <button type="button" className={styles.close}>
+        <button aria-label="Close tab" type="button" className={styles.close}>
           <Icon name={"cross"} />
         </button>
       </NavLink>
