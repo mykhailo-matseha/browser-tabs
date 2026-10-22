@@ -2,9 +2,6 @@
   position: relative;
 }
 
-.body {
-}
-
 .button {
   display: flex;
   align-items: center;
@@ -34,7 +31,6 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  position: absolute;
   top: 100%;
   right: 0;
   padding: 0 15px;
