@@ -84,7 +84,6 @@ function Tabs({ initialTabs }) {
         <TabsDropdown
           ref={dropdownRef}
           hiddenTabs={hiddenTabs}
-          pinToggle={pinToggle}
           handleContextMenu={handleContextMenu}
         />
       )}
