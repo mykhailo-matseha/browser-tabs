@@ -4,10 +4,12 @@ import Icon from "../ui/Icon";
 function Tab({
   variant = "menu",
   tabData,
-  pinToggle,
   onClick,
   ref,
   handleContextMenu,
+  isDragging,
+  style,
+  ...restProps
 }) {
   const getLinkClassName = ({ isActive }) =>
     [
@@ -20,7 +22,13 @@ function Tab({
       .join(" ");
 
   return (
-    <div ref={ref} onContextMenu={handleContextMenu} className={styles.wrapper}>
+    <div
+      ref={ref}
+      onContextMenu={handleContextMenu}
+      className={`${styles.wrapper} ${isDragging ? styles.dragging : ""}`}
+      style={style}
+      {...restProps}
+    >
       <NavLink onClick={onClick} className={getLinkClassName} to={tabData.path}>
         <Icon name={tabData.icon} />
         <span>{tabData.title}</span>

@@ -14,6 +14,7 @@
   transition: all 0.3s;
   border-radius: 1px 1px 0 0;
   border-top: 2px solid transparent;
+  background-color: $bgColor;
   > span {
     flex-grow: 1;
   }
@@ -25,10 +26,19 @@
     transition: opacity 0.3s;
     transform: translateY(-50%);
     right: 0;
+    pointer-events: none;
     width: 1px;
     background-color: rgba(174, 182, 206, 0.2);
   }
   .wrapper:last-child & {
+    &::after {
+      opacity: 0;
+    }
+  }
+  .dragging & {
+    background-color: $mainColor;
+    color: #fff;
+    --ic: #fff;
     &::after {
       opacity: 0;
     }

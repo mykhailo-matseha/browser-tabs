@@ -30,7 +30,7 @@ export default function TabContextMenu({
         }}
       >
         <Icon name="pin" />
-        <span>{isPinned ? "Tab anpinnen" : "Tab abpinnen"}</span>
+        <span>{isPinned ? "Tab abpinnen" : "Tab anpinnen"}</span>
       </button>
     </div>
   );
