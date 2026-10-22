@@ -1,0 +1,18 @@
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &:before {
+    content: "";
+    display: block;
+    width: var(--iw, 16px);
+    height: var(--iw, 16px);
+    aspect-ratio: 1/1;
+    flex-shrink: 0;
+    background-color: var(--ic, #fff);
+    -webkit-mask: var(--icon-url) no-repeat center / contain;
+    mask: var(--icon-url) no-repeat center / contain;
+    transition: all 0.3s;
+  }
+}
