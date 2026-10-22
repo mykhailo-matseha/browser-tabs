@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export function useClickOut(ref, handler) {
   const handlerRef = useRef(handler);
